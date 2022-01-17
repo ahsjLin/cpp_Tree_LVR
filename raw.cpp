@@ -14,15 +14,17 @@ struct BSTNode {
 struct BSTNode *root;
 String tree = "";
 String insert_order = "";
-int n_node=0;
+int n_node_now=0;
 
 struct BSTNode * newBSTNode(int newNode){
 	struct BSTNode * rootNode = new struct BSTNode;
 	String str = "Create new node and place (" + IntToStr(newNode) +")";
 	Form1->Memo2->Lines->Add(str);
 	Form1->Memo2->Lines->Add("");
-	if(StrToInt(Form1->Edit1->Text)==++n_node)
+	if(StrToInt(Form1->Edit1->Text)==++n_node_now) {
 		insert_order += IntToStr(newNode);
+		n_node_now=0;
+	}
 	else
 		insert_order += IntToStr(newNode) +" -> ";
 	rootNode->data = newNode;
@@ -95,10 +97,12 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		newNode = rand()%10000;
 		root = insertBST(root, newNode);
 	}
+
 	tree = "";
 	printBST(root);
 	Memo1->Lines->Add("Order of inserted value:");
 	Memo1->Lines->Add(insert_order);
+    insert_order = "";
 	Memo1->Lines->Add("");
 	Memo1->Lines->Add("The LRV way to show value of node in tree:");
 	Memo1->Lines->Add(tree);
