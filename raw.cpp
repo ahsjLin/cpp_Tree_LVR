@@ -95,11 +95,16 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 	{ ShowMessage("Please input greater than 0.");
 		return;
 	}
-	if(n_node>1000)
+	if(n_node>1000 && CheckBox1->Checked)
 	{
 		ShowMessage("Less than 1000. Closed show processing");
 		CheckBox1->Checked = false;
 	}
+	else if(n_node>1000000)  {
+		ShowMessage("No. No. Don't do that.");
+		CheckBox1->Checked = false;
+        return;
+    }
 	// spanning tree time
 	clock_t t1 = clock();
 	srand(time(NULL));
