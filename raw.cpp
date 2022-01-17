@@ -100,12 +100,13 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 
 	tree = "";
 	printBST(root);
-	Memo1->Lines->Add("Order of inserted value:");
+	Memo1->Lines->Add("The order of inserted value:");
 	Memo1->Lines->Add(insert_order);
     insert_order = "";
 	Memo1->Lines->Add("");
-	Memo1->Lines->Add("The LRV way to show value of node in tree:");
+	Memo1->Lines->Add("The LVR way to show data of nodes in tree:");
 	Memo1->Lines->Add(tree);
+    Memo3->Lines->Add("LRV way to Delete nodes.");
 	deleteBST(root);
 	root = NULL;
 }
